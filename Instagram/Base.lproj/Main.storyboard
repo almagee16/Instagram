@@ -57,30 +57,48 @@
                     <connections>
                         <outlet property="passwordField" destination="dWx-RY-v32" id="XeQ-3h-VOz"/>
                         <outlet property="usernameField" destination="7bq-W6-3yX" id="csT-w8-5gx"/>
-                        <segue destination="5GR-LP-bGT" kind="presentation" identifier="loginSegue" id="4SY-oH-3Xd"/>
+                        <segue destination="f0h-Co-ttd" kind="presentation" identifier="loginSegue" id="6oy-Mf-dlv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Xv2-l1-rA6">
+        <!--Home-->
+        <scene sceneID="UYh-tJ-5Gp">
             <objects>
-                <viewController id="5GR-LP-bGT" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="8Mj-yk-XR2" customClass="HomeViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="riZ-to-d7e"/>
-                        <viewControllerLayoutGuide type="bottom" id="aIS-vA-gaI"/>
+                        <viewControllerLayoutGuide type="top" id="GhB-v2-KbR"/>
+                        <viewControllerLayoutGuide type="bottom" id="fPH-ep-K4p"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7OZ-u3-Bll">
+                    <view key="view" contentMode="scaleToFill" id="Og8-pe-yq9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" id="XDm-Bn-nIE"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5HL-WS-quN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mTT-4h-h7x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="958" y="137"/>
+            <point key="canvasLocation" x="1928.8" y="136.28185907046478"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="eue-Hi-XkI">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="f0h-Co-ttd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="WZr-2O-qfW">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="8Mj-yk-XR2" kind="relationship" relationship="viewControllers" id="c48-qh-Ipt"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I9q-4T-Gbk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="989.60000000000002" y="136.28185907046478"/>
         </scene>
     </scenes>
 </document>
