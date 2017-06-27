@@ -26,9 +26,11 @@ class HomeViewController: UIViewController {
         PFUser.logOutInBackground { (error) in
             print (PFUser.current())
         }
-//        present(LoginViewController, animated: true) {
-//            //
-//        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        present(loginViewController, animated: true) {
+            //
+        }
     }
 
     /*
