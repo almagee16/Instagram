@@ -30,18 +30,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Welcome back \(currentUser.username!) 😀")
             
             // TODO: Load Chat view controller and set as root view controller
+            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
-            print ("one last test")
-            print ("one last test")
-            print ("one last test")
-            print ("one last test")
-            print ("one last test")
-            print ("one last test")
-            print ("one last test")
-            print ("one last test")
-            print ("one last test")
-            window?.rootViewController = homeViewController
+            
+            let tabViewController = storyboard.instantiateViewController(withIdentifier: "UITabBarController")
+            
+            // let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            
+            
+            // let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+            
+            window?.rootViewController = tabViewController
+
         }
     
         
