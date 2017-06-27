@@ -22,6 +22,14 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onLogOut(_ sender: Any) {
+        PFUser.logOutInBackground { (error) in
+            print (PFUser.current())
+        }
+//        present(LoginViewController, animated: true) {
+//            //
+//        }
+    }
 
     /*
     // MARK: - Navigation
