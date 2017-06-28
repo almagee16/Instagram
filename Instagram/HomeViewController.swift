@@ -19,12 +19,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let refreshControl = UIRefreshControl()
         self.refresh()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.refresh), userInfo: nil, repeats: true)
         tableView.reloadData()
         
     }
@@ -56,12 +58,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
             if let posts = posts {
                 // do something with the array of object returned by the call
-                for post in posts {
-                    // access the object as a dictionary and cast type
-                    let likeCount = post["likesCount"] as? Int    // post.value(forKey: "likesCount") is equivalent
-                }
                 self.posts = posts
                 print ("the number of posts is \(posts.count)")
+                self.tableView.reloadData()
             } else {
                 print(error?.localizedDescription)
             }
@@ -85,6 +84,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.instagramPost = post as! PFObject
         
         return cell
+    }
+    
+    func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        
+        self.refresh()
+        refreshControl.endRefreshing()
+       
     }
 
     /*

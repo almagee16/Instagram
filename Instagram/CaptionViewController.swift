@@ -5,7 +5,6 @@
 //  Created by Alvin Magee on 6/27/17.
 //  Copyright © 2017 Alvin Magee. All rights reserved.
 //
-
 import UIKit
 
 class CaptionViewController: UIViewController {
@@ -49,6 +48,9 @@ class CaptionViewController: UIViewController {
         
     }
 
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
     /*
     // MARK: - Navigation
 
