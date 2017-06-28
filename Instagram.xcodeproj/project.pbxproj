@@ -13,6 +13,7 @@
 		4D003A1D1F030DD90068EBC5 /* CaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D003A1C1F030DD90068EBC5 /* CaptionViewController.swift */; };
 		4D003A211F031BF00068EBC5 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D003A201F031BF00068EBC5 /* PhotoCell.swift */; };
 		4D8F6F1B1F0373280030B6DE /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8F6F1A1F0373280030B6DE /* InfiniteScrollActivityView.swift */; };
+		4D8F6F1D1F0378AE0030B6DE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8F6F1C1F0378AE0030B6DE /* DetailViewController.swift */; };
 		4D97A8C01F0226D000837129 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97A8BF1F0226D000837129 /* AppDelegate.swift */; };
 		4D97A8C21F0226D000837129 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97A8C11F0226D000837129 /* ViewController.swift */; };
 		4D97A8C51F0226D000837129 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D97A8C31F0226D000837129 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		4D003A1C1F030DD90068EBC5 /* CaptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionViewController.swift; sourceTree = "<group>"; };
 		4D003A201F031BF00068EBC5 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		4D8F6F1A1F0373280030B6DE /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
+		4D8F6F1C1F0378AE0030B6DE /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		4D97A8BC1F0226D000837129 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D97A8BF1F0226D000837129 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D97A8C11F0226D000837129 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				4D003A1C1F030DD90068EBC5 /* CaptionViewController.swift */,
 				4D003A201F031BF00068EBC5 /* PhotoCell.swift */,
 				4D8F6F1A1F0373280030B6DE /* InfiniteScrollActivityView.swift */,
+				4D8F6F1C1F0378AE0030B6DE /* DetailViewController.swift */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				4D003A1B1F030B9D0068EBC5 /* Post.swift in Sources */,
 				4D003A211F031BF00068EBC5 /* PhotoCell.swift in Sources */,
 				4D97A8C01F0226D000837129 /* AppDelegate.swift in Sources */,
+				4D8F6F1D1F0378AE0030B6DE /* DetailViewController.swift in Sources */,
 				4D003A1D1F030DD90068EBC5 /* CaptionViewController.swift in Sources */,
 				4D97A8F01F02333000837129 /* HomeViewController.swift in Sources */,
 			);

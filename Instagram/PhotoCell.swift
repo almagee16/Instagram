@@ -15,7 +15,6 @@ class PhotoCell: UITableViewCell {
     
     var instagramPost: PFObject! {
         didSet {
-            print (instagramPost)
             self.photoImage.file = instagramPost["media"] as? PFFile
             self.photoImage.loadInBackground()
         }
