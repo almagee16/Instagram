@@ -10,11 +10,21 @@ import UIKit
 import Parse
 import ParseUI
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
     var posts: [PFObject]?
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var loadingMoreView: InfiniteScrollActivityView?
+    
+    var count = 0
+    
+    var isMoreDataLoading = false
+
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +36,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+        loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        loadingMoreView!.isHidden = true
+        tableView.addSubview(loadingMoreView!)
         
         tableView.reloadData()
         
@@ -52,20 +67,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         var query = PFQuery(className: "Post")
         query.order(byDescending: "createdAt")
         query.includeKey("author")
-        query.limit = 20
+        query.limit = 1
+        query.skip = self.count
+        self.count = self.count + 1
         
         // fetch data asynchronously
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
             if let posts = posts {
                 // do something with the array of object returned by the call
-                self.posts = posts
+                if self.posts != nil {
+                    self.posts!.append(contentsOf: posts)
+                } else {
+                    self.posts = posts
+                }
                 print ("the number of posts is \(posts.count)")
+                self.loadingMoreView!.stopAnimating()
+                self.isMoreDataLoading = false
                 self.tableView.reloadData()
+                
             } else {
                 print(error?.localizedDescription)
             }
         }
-        print ("query done. about to reload the tableview data")
         tableView.reloadData()
     }
     
@@ -92,6 +115,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         refreshControl.endRefreshing()
        
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                isMoreDataLoading = true
+                
+                // ... Code to load more results ...
+                let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+                
+                self.refresh()
+                
+            }
+        }
+    }
+
 
     /*
     // MARK: - Navigation

@@ -12,6 +12,7 @@
 		4D003A1B1F030B9D0068EBC5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D003A1A1F030B9D0068EBC5 /* Post.swift */; };
 		4D003A1D1F030DD90068EBC5 /* CaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D003A1C1F030DD90068EBC5 /* CaptionViewController.swift */; };
 		4D003A211F031BF00068EBC5 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D003A201F031BF00068EBC5 /* PhotoCell.swift */; };
+		4D8F6F1B1F0373280030B6DE /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8F6F1A1F0373280030B6DE /* InfiniteScrollActivityView.swift */; };
 		4D97A8C01F0226D000837129 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97A8BF1F0226D000837129 /* AppDelegate.swift */; };
 		4D97A8C21F0226D000837129 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97A8C11F0226D000837129 /* ViewController.swift */; };
 		4D97A8C51F0226D000837129 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D97A8C31F0226D000837129 /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		4D003A1A1F030B9D0068EBC5 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		4D003A1C1F030DD90068EBC5 /* CaptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionViewController.swift; sourceTree = "<group>"; };
 		4D003A201F031BF00068EBC5 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		4D8F6F1A1F0373280030B6DE /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		4D97A8BC1F0226D000837129 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D97A8BF1F0226D000837129 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D97A8C11F0226D000837129 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				4D003A1A1F030B9D0068EBC5 /* Post.swift */,
 				4D003A1C1F030DD90068EBC5 /* CaptionViewController.swift */,
 				4D003A201F031BF00068EBC5 /* PhotoCell.swift */,
+				4D8F6F1A1F0373280030B6DE /* InfiniteScrollActivityView.swift */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D8F6F1B1F0373280030B6DE /* InfiniteScrollActivityView.swift in Sources */,
 				4D003A191F02F3960068EBC5 /* PhotoMapViewController.swift in Sources */,
 				4D97A8EE1F0229F800837129 /* LoginViewController.swift in Sources */,
 				4D97A8C21F0226D000837129 /* ViewController.swift in Sources */,
