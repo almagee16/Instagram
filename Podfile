@@ -8,6 +8,7 @@ target 'Instagram' do
   # Pods for Instagram
 
 pod 'Parse'
+pod 'ParseUI'
 pod 'AlamofireImage', '~> 3.1'
 
   target 'InstagramTests' do

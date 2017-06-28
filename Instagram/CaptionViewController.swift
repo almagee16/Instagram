@@ -39,7 +39,7 @@ class CaptionViewController: UIViewController {
                 print ("success")
                 
             } else {
-                print ("error")
+                print (error?.localizedDescription)
             }
         }
         
