@@ -12,6 +12,7 @@ import ParseUI
 class DetailViewController: UIViewController {
 
     
+    @IBOutlet weak var usernameButton: UIButton!
     @IBOutlet weak var detailedImage: PFImageView!
     @IBOutlet weak var timeStampLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
@@ -35,6 +36,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        usernameButton.setTitle("my text here", for: .normal)
+
         if captionLabel == nil {
             
         } else {
