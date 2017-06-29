@@ -48,6 +48,11 @@ class CaptionViewController: UIViewController {
         
     }
 
+    @IBAction func onCancel(_ sender: Any) {
+        dismiss(animated: true) {
+            
+        }
+    }
     @IBAction func onTap(_ sender: Any) {
         view.endEditing(true)
     }

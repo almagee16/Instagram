@@ -13,8 +13,16 @@ class PhotoCell: UITableViewCell {
 
     @IBOutlet weak var photoImage: PFImageView!
     
+    @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    
     var instagramPost: PFObject! {
         didSet {
+            print (instagramPost)
+            print ("")
+            self.captionLabel.text = instagramPost["caption"] as! String
+            let author = instagramPost["author"] as! PFUser
+            self.usernameLabel.text = author.username as! String
             self.photoImage.file = instagramPost["media"] as? PFFile
             self.photoImage.loadInBackground()
         }
