@@ -42,15 +42,19 @@ class CaptionViewController: UIViewController {
             }
         }
         
-        dismiss(animated: true) { 
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabViewController = storyboard.instantiateViewController(withIdentifier: "UITabBarController")
+        present(tabViewController, animated: true) {
             //
         }
         
     }
 
     @IBAction func onCancel(_ sender: Any) {
-        dismiss(animated: true) {
-            
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabViewController = storyboard.instantiateViewController(withIdentifier: "UITabBarController")
+        present(tabViewController, animated: true) {
+            //
         }
     }
     @IBAction func onTap(_ sender: Any) {

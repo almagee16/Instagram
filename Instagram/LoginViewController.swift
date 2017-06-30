@@ -15,6 +15,8 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var passwordField: UITextField!
     
+    @IBOutlet weak var loginButton: UIButton!
+    
     let alertController = UIAlertController(title: "Empty inputs", message: "Please provide both a username and a password", preferredStyle: .alert)
     
     let invalidUserName = UIAlertController(title: "Invalid Username", message: "This username already exists. Please choose another username", preferredStyle: .alert)
@@ -31,6 +33,9 @@ class LoginViewController: UIViewController {
         alertController.addAction(OKAction)
         invalidUserName.addAction(OKAction)
         invalidLoginCredentials.addAction(OKAction)
+        
+        loginButton.layer.cornerRadius = loginButton.frame.width * 0.05
+        loginButton.layer.masksToBounds = true
     }
 
     override func didReceiveMemoryWarning() {

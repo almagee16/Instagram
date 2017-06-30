@@ -45,6 +45,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func didTapCamera(_ sender: Any) {
+        print ("WHAT IS GOING ON?!?!?!?!?!!")
         let vc = UIImagePickerController()
         vc.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
         vc.allowsEditing = true

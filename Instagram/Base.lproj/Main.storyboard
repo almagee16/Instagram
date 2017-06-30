@@ -96,6 +96,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="ubc-w4-MSJ" id="6gJ-LA-Idg"/>
                         <outlet property="passwordField" destination="dWx-RY-v32" id="XeQ-3h-VOz"/>
                         <outlet property="usernameField" destination="7bq-W6-3yX" id="csT-w8-5gx"/>
                         <segue destination="f0h-Co-ttd" kind="presentation" identifier="loginSegue" id="6oy-Mf-dlv"/>
@@ -296,7 +297,7 @@
             </objects>
             <point key="canvasLocation" x="2440.8000000000002" y="572.56371814092961"/>
         </scene>
-        <!--User View Controller-->
+        <!--Profile-->
         <scene sceneID="6ol-PL-I7r">
             <objects>
                 <viewController storyboardIdentifier="UserViewController" id="1X7-Pz-bPk" customClass="UserViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -308,8 +309,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gwr-Qm-4Wg">
-                                <rect key="frame" x="0.0" y="114" width="375" height="504"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your Posts:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJX-Y1-von">
+                                <rect key="frame" x="8" y="72" width="359" height="59"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tbo-Pn-ABL" customClass="PFImageView">
+                                <rect key="frame" x="137" y="139" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="4Nd-Bb-dli"/>
+                                    <constraint firstAttribute="height" constant="100" id="bLb-jw-Oke"/>
+                                </constraints>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gwr-Qm-4Wg">
+                                <rect key="frame" x="0.0" y="247" width="375" height="371"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mjE-UU-153">
                                     <size key="itemSize" width="91" height="91"/>
@@ -343,27 +357,47 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Posts:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJX-Y1-von">
-                                <rect key="frame" x="8" y="72" width="359" height="34"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72Y-wi-tEl">
+                                <rect key="frame" x="245" y="174" width="123" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <state key="normal" title="Set Profile Picture"/>
+                                <connections>
+                                    <action selector="onProfileButton:" destination="1X7-Pz-bPk" eventType="touchUpInside" id="PWB-0a-usX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="gwr-Qm-4Wg" secondAttribute="trailing" id="4RI-Fg-cLU"/>
-                            <constraint firstItem="wJX-Y1-von" firstAttribute="top" secondItem="Nyx-mI-8EW" secondAttribute="bottom" constant="8" id="FGO-Ze-Gxb"/>
-                            <constraint firstItem="wJX-Y1-von" firstAttribute="leading" secondItem="gx0-f7-uu4" secondAttribute="leading" constant="8" id="eBJ-vq-Bhz"/>
-                            <constraint firstItem="gwr-Qm-4Wg" firstAttribute="leading" secondItem="gx0-f7-uu4" secondAttribute="leading" id="hbD-FQ-pc9"/>
-                            <constraint firstItem="gwr-Qm-4Wg" firstAttribute="top" secondItem="wJX-Y1-von" secondAttribute="bottom" constant="8" id="m4b-OI-lrR"/>
-                            <constraint firstItem="6s1-e3-WXr" firstAttribute="top" secondItem="gwr-Qm-4Wg" secondAttribute="bottom" id="sG6-1L-v9g"/>
-                            <constraint firstAttribute="trailing" secondItem="wJX-Y1-von" secondAttribute="trailing" constant="8" id="smT-sR-TjJ"/>
+                            <constraint firstItem="gwr-Qm-4Wg" firstAttribute="top" secondItem="Tbo-Pn-ABL" secondAttribute="bottom" constant="8" id="04P-lT-ARP"/>
+                            <constraint firstItem="gwr-Qm-4Wg" firstAttribute="leading" secondItem="gx0-f7-uu4" secondAttribute="leading" id="3lF-hs-myh"/>
+                            <constraint firstItem="Tbo-Pn-ABL" firstAttribute="top" secondItem="wJX-Y1-von" secondAttribute="bottom" constant="8" id="89L-R4-BFO"/>
+                            <constraint firstItem="wJX-Y1-von" firstAttribute="leading" secondItem="gx0-f7-uu4" secondAttribute="leading" constant="8" id="Ban-GG-4Mf"/>
+                            <constraint firstItem="wJX-Y1-von" firstAttribute="top" secondItem="Nyx-mI-8EW" secondAttribute="bottom" constant="8" id="MVS-KC-kW9"/>
+                            <constraint firstItem="gwr-Qm-4Wg" firstAttribute="centerX" secondItem="Tbo-Pn-ABL" secondAttribute="centerX" id="ZIg-8r-dtN"/>
+                            <constraint firstAttribute="trailing" secondItem="gwr-Qm-4Wg" secondAttribute="trailing" constant="8" id="ZTh-sq-5A5"/>
+                            <constraint firstItem="gwr-Qm-4Wg" firstAttribute="bottom" secondItem="6s1-e3-WXr" secondAttribute="top" id="gd3-fu-yl6"/>
+                            <constraint firstItem="6s1-e3-WXr" firstAttribute="top" secondItem="gwr-Qm-4Wg" secondAttribute="bottom" id="gqR-eK-0so"/>
+                            <constraint firstItem="gwr-Qm-4Wg" firstAttribute="centerX" secondItem="wJX-Y1-von" secondAttribute="centerX" id="hED-ki-m8w"/>
+                            <constraint firstAttribute="trailing" secondItem="wJX-Y1-von" secondAttribute="trailing" constant="8" id="jWB-WD-KNN"/>
+                            <constraint firstItem="Tbo-Pn-ABL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wJX-Y1-von" secondAttribute="bottom" constant="8" id="qBI-hN-bcP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="SBc-3h-NQJ"/>
+                    <toolbarItems>
+                        <barButtonItem style="plain" id="bgf-OF-DqW">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aFJ-WC-q4F">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Profile" id="SBc-3h-NQJ"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="gwr-Qm-4Wg" id="85n-Bf-hGH"/>
+                        <outlet property="profileImage" destination="Tbo-Pn-ABL" id="JVW-tp-cYz"/>
+                        <outlet property="profilePictureButton" destination="72Y-wi-tEl" id="5Zk-f4-6Nc"/>
                         <outlet property="usernameLabel" destination="wJX-Y1-von" id="nBV-YY-fQK"/>
                     </connections>
                 </viewController>
@@ -397,9 +431,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k5u-iD-aOR">
-                                <rect key="frame" x="43" y="173" width="289" height="320"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k5u-iD-aOR">
+                                <rect key="frame" x="43" y="183" width="289" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="QgV-Vi-syQ"/>
+                                    <constraint firstAttribute="width" constant="300" id="j3e-FB-icf"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLb-bj-fc5">
                                 <rect key="frame" x="57" y="135" width="58" height="30"/>
@@ -409,9 +446,8 @@
                                     <action selector="onCancel:" destination="7zS-LH-24e" eventType="touchUpInside" id="fwZ-Ds-T6G"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7s-1T-tXb">
-                                <rect key="frame" x="241" y="135" width="91" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7s-1T-tXb">
+                                <rect key="frame" x="241" y="145" width="91" height="30"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="onDone:" destination="7zS-LH-24e" eventType="touchUpInside" id="rEm-Zt-d3O"/>
@@ -420,6 +456,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="k5u-iD-aOR" firstAttribute="top" secondItem="l7s-1T-tXb" secondAttribute="bottom" constant="8" id="PP4-NK-CW4"/>
+                            <constraint firstItem="k5u-iD-aOR" firstAttribute="centerY" secondItem="1ez-Dh-ssV" secondAttribute="centerY" id="upu-ru-pqz"/>
+                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="fLQ-A7-SRZ" appends="YES" id="mrx-oh-VzX"/>
                         </connections>
@@ -522,6 +562,6 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jrQ-jk-tkE"/>
+        <segue reference="V8x-dB-az5"/>
     </inferredMetricsTieBreakers>
 </document>

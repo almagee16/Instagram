@@ -8,23 +8,63 @@
 
 import UIKit
 import Parse
+import ParseUI
 
-class UserViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class UserViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var profilePictureButton: UIButton!
+    @IBOutlet weak var profileImage: PFImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     var count = 0
     var posts: [PFObject]?
+    let alertController = UIAlertController(title: "Image choice method", message: "Please choose a method to choose the image from", preferredStyle: .alert)
+    var image: UIImage?
+    let vc = UIImagePickerController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // usernameLabel.text =
 
         // Do any additional setup after loading the view.
+//        if PFUser.current(). {
+//            usernameButton.setTitle("Change profile picture", for: .normal)
+//            self.profileImage.file = 
+//            self.profileImage.loadInBackground()
+//        } else {
+//            usernameButton.setTitle("Set profile picture", for: .normal)
+//        }
+        
+        vc.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        vc.allowsEditing = true
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+            // handle response here.
+            
+            self.vc.sourceType = .camera
+            self.present(self.vc, animated: true, completion: nil)
+        }
+        alertController.addAction(cameraAction)
+        
+        let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { (action) in
+            // handle response here.
+            self.vc.sourceType = .photoLibrary
+            self.present(self.vc, animated: true, completion: nil)
+        }
+        alertController.addAction(libraryAction)
+        
+        if PFUser.current()?.value(forKey: "Profile_picture") != nil {
+            let pictureFile = PFUser.current()?.value(forKey: "Profile_picture")
+            self.profileImage.file = pictureFile as! PFFile
+            self.profileImage.loadInBackground()
+        }
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        profileImage.layer.cornerRadius = profileImage.frame.width * 0.5
+        profileImage.layer.masksToBounds = true
         
+        usernameLabel.text = PFUser.current()!.username
         self.refresh(pullDown: true)
         collectionView.reloadData()
         print ("COLLECTION VIEW RELOADED IN VIEW DID LOAD")
@@ -96,6 +136,61 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
 
+    
+    @IBAction func onProfileButton(_ sender: Any) {
+//        let alertController = UIAlertController(title: "Image choice method", message: "Please choose a method to choose the image from", preferredStyle: .alert)
+//        
+//        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+//                        // handle response here.
+//        }
+//        alertController.addAction(OKAction)
+        
+        present(alertController, animated: true) {
+            
+        }
+        
+        
+        
+        
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : Any]) {
+        // Get the image captured by the UIImagePickerController
+        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        self.image = editedImage
+        let file = Post.getPFFileFromImage(image: self.image)
+        
+        
+        PFUser.current()?.setValue(file, forKey: "Profile_picture")
+        PFUser.current()?.saveInBackground(block: { (success: Bool, error: Error?) in
+            if success {
+                print ("success")
+                
+                let pictureFile = PFUser.current()?.value(forKey: "Profile_picture")
+                self.profileImage.file = pictureFile as! PFFile
+                self.profileImage.loadInBackground()
+            } else {
+                print (error?.localizedDescription)
+            }
+        })
+        
+        
+        
+        
+
+        
+        
+        // Do something with the images (based on your use case)
+        
+        
+        
+        
+        // Dismiss UIImagePickerController to go back to your original view controller
+        dismiss(animated: true, completion: nil)
+    }
     
 
     

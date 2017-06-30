@@ -36,8 +36,10 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let author = instagramPost["author"] as! PFUser
+        let username = author.username as! String
         
-        usernameButton.setTitle("my text here", for: .normal)
+        usernameButton.setTitle(username, for: .normal)
 
         if captionLabel == nil {
             
