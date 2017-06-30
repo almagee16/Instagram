@@ -65,10 +65,12 @@ class LoginViewController: UIViewController {
                     print("User logged in successfully")
                     // display view controller that needs to shown after successful login
                     print ("about to perform segue")
+                    
                     self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 }
             })
         }
+        
 
     }
     
@@ -99,6 +101,15 @@ class LoginViewController: UIViewController {
                 } else {
                     print("User Registered successfully")
                     // manually segue to logged in view
+                    let file = Post.getPFFileFromImage(image: #imageLiteral(resourceName: "image_placeholder"))
+                    PFUser.current()?.setValue(file, forKey: "Profile_picture")
+                    PFUser.current()?.saveInBackground(block: { (success: Bool, error: Error?) in
+                        if success {
+                            print ("success")
+                        } else {
+                            print (error?.localizedDescription)
+                        }
+                    })
                     self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 }
 

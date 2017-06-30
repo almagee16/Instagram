@@ -23,7 +23,17 @@ class DetailViewController: UIViewController {
                 return
             } else {
                 captionLabel.text = instagramPost["caption"] as! String
-                timeStampLabel.text = instagramPost["createdAt"] as! String
+                
+                if let date = instagramPost.createdAt {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateStyle = .short
+                    dateFormatter.timeStyle = .short
+                    let dateString = dateFormatter.string(from: date)
+                    print ("The date string is \(dateString)")
+                    print ("why isn't this thing working")
+                    timeStampLabel.text = dateString
+                    
+                }
                 self.detailedImage.file = instagramPost["media"] as? PFFile
                 
             }
@@ -51,7 +61,16 @@ class DetailViewController: UIViewController {
         if timeStampLabel == nil {
             
         } else {
-            timeStampLabel.text = instagramPost.createdAt!.description
+            if let date = instagramPost.createdAt {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .long
+                dateFormatter.timeStyle = .short
+                let dateString = dateFormatter.string(from: date)
+                print ("The date string is \(dateString)")
+                print ("why isn't this thing working")
+                timeStampLabel.text = dateString
+                
+            }
         }
         
         
@@ -62,20 +81,27 @@ class DetailViewController: UIViewController {
         }
     }
 
+    @IBAction func onProfileButton(_ sender: Any) {
+        performSegue(withIdentifier: "profileSegue", sender: self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let destination = segue.destination as! UserViewController
+        let user = instagramPost["author"] as! PFUser
+        destination.user = user
     }
-    */
+ 
 
 }

@@ -111,7 +111,7 @@
             </objects>
             <point key="canvasLocation" x="-575.20000000000005" y="572.56371814092961"/>
         </scene>
-        <!--Timeline-->
+        <!--Instagram-->
         <scene sceneID="UYh-tJ-5Gp">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="8Mj-yk-XR2" customClass="HomeViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -142,42 +142,56 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="499.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lqV-ej-G9L" customClass="PFImageView">
-                                                    <rect key="frame" x="8" y="37" width="359" height="359"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="lqV-ej-G9L" secondAttribute="height" multiplier="1:1" id="6kL-2N-DAj"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Duz-yL-7SV">
-                                                    <rect key="frame" x="16" y="8" width="343" height="21"/>
+                                                    <rect key="frame" x="51" y="16" width="308" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27" id="bVO-Lk-Uls"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2p-y9-561">
-                                                    <rect key="frame" x="16" y="404" width="343" height="20.5"/>
+                                                    <rect key="frame" x="16" y="418" width="343" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wji-iu-laa" customClass="PFImageView">
+                                                    <rect key="frame" x="16" y="16" width="27" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="27" id="8bn-JS-00h"/>
+                                                        <constraint firstAttribute="height" constant="27" id="xKH-SI-in5"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lqV-ej-G9L" customClass="PFImageView">
+                                                    <rect key="frame" x="8" y="51" width="359" height="359"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="lqV-ej-G9L" secondAttribute="height" multiplier="1:1" id="U92-Pw-EQF"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="lqV-ej-G9L" firstAttribute="top" secondItem="Duz-yL-7SV" secondAttribute="bottom" constant="8" id="1dZ-4b-XWo"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="lqV-ej-G9L" secondAttribute="trailing" id="7XD-Ac-dxQ"/>
-                                                <constraint firstItem="N2p-y9-561" firstAttribute="leading" secondItem="Z1T-pz-7pf" secondAttribute="leadingMargin" constant="8" id="F3L-dz-9Ow"/>
-                                                <constraint firstItem="N2p-y9-561" firstAttribute="top" secondItem="lqV-ej-G9L" secondAttribute="bottom" constant="8" id="ROk-gA-2PR"/>
-                                                <constraint firstItem="Duz-yL-7SV" firstAttribute="leading" secondItem="Z1T-pz-7pf" secondAttribute="leadingMargin" constant="8" id="YTr-2f-o3V"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="N2p-y9-561" secondAttribute="trailing" constant="8" id="cPr-9D-hW8"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Duz-yL-7SV" secondAttribute="trailing" constant="8" id="g1u-L1-nNc"/>
-                                                <constraint firstItem="Duz-yL-7SV" firstAttribute="top" secondItem="Z1T-pz-7pf" secondAttribute="top" constant="8" id="jMe-W5-gu4"/>
-                                                <constraint firstItem="lqV-ej-G9L" firstAttribute="top" secondItem="Duz-yL-7SV" secondAttribute="bottom" constant="8" id="oWq-LO-Xo5"/>
-                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="N2p-y9-561" secondAttribute="bottom" constant="16" id="oyA-rR-YBS"/>
-                                                <constraint firstItem="lqV-ej-G9L" firstAttribute="leading" secondItem="Z1T-pz-7pf" secondAttribute="leadingMargin" id="t7t-kt-4OT"/>
+                                                <constraint firstItem="lqV-ej-G9L" firstAttribute="leading" secondItem="Z1T-pz-7pf" secondAttribute="leadingMargin" id="2LU-7R-99H"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="N2p-y9-561" secondAttribute="trailing" constant="8" id="9Rm-rw-zDd"/>
+                                                <constraint firstItem="N2p-y9-561" firstAttribute="top" secondItem="lqV-ej-G9L" secondAttribute="bottom" constant="8" id="Io3-Tp-xQw"/>
+                                                <constraint firstItem="lqV-ej-G9L" firstAttribute="trailing" secondItem="Z1T-pz-7pf" secondAttribute="trailingMargin" id="M28-EP-3ne"/>
+                                                <constraint firstItem="N2p-y9-561" firstAttribute="top" secondItem="lqV-ej-G9L" secondAttribute="bottom" constant="8" id="N1U-LW-HWQ"/>
+                                                <constraint firstItem="Duz-yL-7SV" firstAttribute="top" secondItem="Z1T-pz-7pf" secondAttribute="topMargin" constant="8" id="TI5-3N-HEG"/>
+                                                <constraint firstItem="lqV-ej-G9L" firstAttribute="top" secondItem="wji-iu-laa" secondAttribute="bottom" constant="8" id="a9u-av-YlO"/>
+                                                <constraint firstItem="N2p-y9-561" firstAttribute="leading" secondItem="Z1T-pz-7pf" secondAttribute="leadingMargin" constant="8" id="aHe-f8-dvy"/>
+                                                <constraint firstItem="wji-iu-laa" firstAttribute="leading" secondItem="Z1T-pz-7pf" secondAttribute="leadingMargin" constant="8" id="dpr-t4-FmK"/>
+                                                <constraint firstItem="Duz-yL-7SV" firstAttribute="leading" secondItem="wji-iu-laa" secondAttribute="trailing" constant="8" id="knn-vP-8PG"/>
+                                                <constraint firstItem="Duz-yL-7SV" firstAttribute="leading" secondItem="wji-iu-laa" secondAttribute="trailing" constant="8" id="lpw-FS-BYj"/>
+                                                <constraint firstItem="wji-iu-laa" firstAttribute="top" secondItem="Z1T-pz-7pf" secondAttribute="topMargin" constant="8" id="m8V-Ly-JnJ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Duz-yL-7SV" secondAttribute="trailing" constant="8" id="vep-jt-qK6"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="N2p-y9-561" secondAttribute="bottom" constant="8" id="yVC-51-APV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="captionLabel" destination="N2p-y9-561" id="JcU-wa-pIw"/>
                                             <outlet property="photoImage" destination="lqV-ej-G9L" id="64j-E0-16M"/>
+                                            <outlet property="profileImage" destination="wji-iu-laa" id="1Ph-zL-2Wa"/>
                                             <outlet property="usernameLabel" destination="Duz-yL-7SV" id="p6b-ct-SBR"/>
                                             <segue destination="WVX-Mw-9jj" kind="show" identifier="detailSegue" id="jrQ-jk-tkE"/>
                                         </connections>
@@ -193,7 +207,7 @@
                             <constraint firstItem="fPH-ep-K4p" firstAttribute="top" secondItem="6fd-f1-6Re" secondAttribute="bottom" constant="8" id="tSj-iH-6QM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Timeline" id="jn0-cQ-egA">
+                    <navigationItem key="navigationItem" title="Instagram" id="jn0-cQ-egA">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="0jm-LE-pAm">
                             <connections>
                                 <action selector="onRealLogOut:" destination="8Mj-yk-XR2" id="sg2-4p-SlZ"/>
@@ -242,6 +256,9 @@
                                 <rect key="frame" x="22" y="425" width="304" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onProfileButton:" destination="WVX-Mw-9jj" eventType="touchUpInside" id="jOK-br-kLL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -251,6 +268,7 @@
                         <outlet property="detailedImage" destination="Yji-gU-JoV" id="419-rI-oZ3"/>
                         <outlet property="timeStampLabel" destination="1mk-ZY-m2P" id="DvD-bA-vOw"/>
                         <outlet property="usernameButton" destination="kB5-LJ-hho" id="Lda-R4-iPe"/>
+                        <segue destination="1X7-Pz-bPk" kind="show" identifier="profileSegue" id="ldf-w5-kfP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tjL-Vz-SJI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -361,7 +379,7 @@
                                 <rect key="frame" x="245" y="174" width="123" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <state key="normal" title="Set Profile Picture"/>
+                                <state key="normal" title="Change Profile Picture"/>
                                 <connections>
                                     <action selector="onProfileButton:" destination="1X7-Pz-bPk" eventType="touchUpInside" id="PWB-0a-usX"/>
                                 </connections>
@@ -375,7 +393,7 @@
                             <constraint firstItem="wJX-Y1-von" firstAttribute="leading" secondItem="gx0-f7-uu4" secondAttribute="leading" constant="8" id="Ban-GG-4Mf"/>
                             <constraint firstItem="wJX-Y1-von" firstAttribute="top" secondItem="Nyx-mI-8EW" secondAttribute="bottom" constant="8" id="MVS-KC-kW9"/>
                             <constraint firstItem="gwr-Qm-4Wg" firstAttribute="centerX" secondItem="Tbo-Pn-ABL" secondAttribute="centerX" id="ZIg-8r-dtN"/>
-                            <constraint firstAttribute="trailing" secondItem="gwr-Qm-4Wg" secondAttribute="trailing" constant="8" id="ZTh-sq-5A5"/>
+                            <constraint firstAttribute="trailing" secondItem="gwr-Qm-4Wg" secondAttribute="trailing" id="ZTh-sq-5A5"/>
                             <constraint firstItem="gwr-Qm-4Wg" firstAttribute="bottom" secondItem="6s1-e3-WXr" secondAttribute="top" id="gd3-fu-yl6"/>
                             <constraint firstItem="6s1-e3-WXr" firstAttribute="top" secondItem="gwr-Qm-4Wg" secondAttribute="bottom" id="gqR-eK-0so"/>
                             <constraint firstItem="gwr-Qm-4Wg" firstAttribute="centerX" secondItem="wJX-Y1-von" secondAttribute="centerX" id="hED-ki-m8w"/>
@@ -396,6 +414,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="gwr-Qm-4Wg" id="85n-Bf-hGH"/>
+                        <outlet property="flowLayout" destination="mjE-UU-153" id="CQv-sR-Ta3"/>
                         <outlet property="profileImage" destination="Tbo-Pn-ABL" id="JVW-tp-cYz"/>
                         <outlet property="profilePictureButton" destination="72Y-wi-tEl" id="5Zk-f4-6Nc"/>
                         <outlet property="usernameLabel" destination="wJX-Y1-von" id="nBV-YY-fQK"/>
@@ -562,6 +581,7 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ldf-w5-kfP"/>
         <segue reference="V8x-dB-az5"/>
     </inferredMetricsTieBreakers>
 </document>

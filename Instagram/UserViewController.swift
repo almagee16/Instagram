@@ -21,7 +21,9 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let alertController = UIAlertController(title: "Image choice method", message: "Please choose a method to choose the image from", preferredStyle: .alert)
     var image: UIImage?
     let vc = UIImagePickerController()
+    var user: PFUser?
 
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +35,12 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        } else {
 //            usernameButton.setTitle("Set profile picture", for: .normal)
 //        }
+        if user == nil {
+            user = PFUser.current()!
+            
+        } else {
+            profilePictureButton.setTitle("", for: .normal)
+        }
         
         vc.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
         vc.allowsEditing = true
@@ -52,11 +60,12 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         alertController.addAction(libraryAction)
         
-        if PFUser.current()?.value(forKey: "Profile_picture") != nil {
-            let pictureFile = PFUser.current()?.value(forKey: "Profile_picture")
-            self.profileImage.file = pictureFile as! PFFile
-            self.profileImage.loadInBackground()
-        }
+        print (" the user is \(user!)")
+        print (user!.value(forKey: "Profile_picture"))
+        print ("okay after all that")
+        let pictureFile = user!.value(forKey: "Profile_picture")
+        self.profileImage.file = pictureFile as? PFFile
+        self.profileImage.loadInBackground()
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -64,7 +73,12 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
         profileImage.layer.cornerRadius = profileImage.frame.width * 0.5
         profileImage.layer.masksToBounds = true
         
-        usernameLabel.text = PFUser.current()!.username
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 1
+        flowLayout.itemSize = CGSize(width: 1/3*collectionView.frame.width - 1, height: 1/3*collectionView.frame.height - 1)
+        
+        
+        usernameLabel.text = user!.username
         self.refresh(pullDown: true)
         collectionView.reloadData()
         print ("COLLECTION VIEW RELOADED IN VIEW DID LOAD")
@@ -79,7 +93,7 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
         //let predicate = NSPredicate(format: "likesCount > 100")
 
         var query = PFQuery(className: "Post")
-        query.whereKey("author", equalTo: PFUser.current()!)
+        query.whereKey("author", equalTo: user!)
         query.order(byDescending: "createdAt")
         query.includeKey("author")
         query.includeKey("_created_At")
@@ -144,8 +158,12 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //                        // handle response here.
 //        }
 //        alertController.addAction(OKAction)
-        
-        present(alertController, animated: true) {
+        if user == PFUser.current() {
+            print ("it's getting here what the heck")
+            present(alertController, animated: true) {
+                
+            }
+        } else {
             
         }
         

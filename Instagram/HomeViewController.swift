@@ -29,6 +29,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        print (PFUser.current())
+        print (PFUser.current()?.value(forKey: "Profile_picture"))
+
         let refreshControl = UIRefreshControl()
         self.refresh(pullDown: true)
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
@@ -42,6 +46,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.estimatedRowHeight = 500
         
         self.tableView.separatorStyle = .none
+        
         
         let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
         loadingMoreView = InfiniteScrollActivityView(frame: frame)
@@ -71,7 +76,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     @IBAction func onRealLogOut(_ sender: Any) {
         PFUser.logOutInBackground { (error) in
-            print (PFUser.current())
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
@@ -105,10 +109,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 } else {
                     self.posts = posts
                 }
-                print ("the number of posts is \(posts.count)")
-                let post = posts[0]
+                // let post = posts[0]
                 
-                print("Created at: \(post.createdAt)")
+                // print("Created at: \(post.createdAt)")
                 self.loadingMoreView!.stopAnimating()
                 self.isMoreDataLoading = false
                 self.tableView.reloadData()

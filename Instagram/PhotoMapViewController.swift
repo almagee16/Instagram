@@ -14,10 +14,32 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
 
     var image: UIImage?
     
+    let alertController = UIAlertController(title: "Image choice method", message: "Please choose a method to choose the image from", preferredStyle: .alert)
+    
+    let vc = UIImagePickerController()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        vc.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        vc.allowsEditing = true
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+            // handle response here.
+            self.vc.sourceType = .camera
+            self.present(self.vc, animated: true, completion: nil)
+        }
+        alertController.addAction(cameraAction)
+        
+        let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { (action) in
+            // handle response here.
+            self.vc.sourceType = .photoLibrary
+            self.present(self.vc, animated: true, completion: nil)
+        }
+        alertController.addAction(libraryAction)
     
     }
 
