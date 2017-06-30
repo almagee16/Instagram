@@ -10,37 +10,48 @@ import UIKit
 import Parse
 import ParseUI
 
-class UserViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class UserViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var profilePictureButton: UIButton!
     @IBOutlet weak var profileImage: PFImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    var count = 0
     var posts: [PFObject]?
     let alertController = UIAlertController(title: "Image choice method", message: "Please choose a method to choose the image from", preferredStyle: .alert)
     var image: UIImage?
     let vc = UIImagePickerController()
     var user: PFUser?
-
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
+    var loadingMoreView: InfiniteScrollActivityView?
+    var count = 0
+    var isMoreDataLoading = false
+
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        if PFUser.current(). {
-//            usernameButton.setTitle("Change profile picture", for: .normal)
-//            self.profileImage.file = 
-//            self.profileImage.loadInBackground()
-//        } else {
-//            usernameButton.setTitle("Set profile picture", for: .normal)
-//        }
         if user == nil {
             user = PFUser.current()!
             
         } else {
             profilePictureButton.setTitle("", for: .normal)
         }
+        
+        let frame = CGRect(x: 0, y: collectionView.contentSize.height, width: collectionView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+        loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        loadingMoreView!.isHidden = true
+        collectionView.addSubview(loadingMoreView!)
+        
+        let refreshControl = UIRefreshControl()
+        self.refresh(pullDown: true)
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        collectionView.insertSubview(refreshControl, at: 0)
+
         
         vc.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
         vc.allowsEditing = true
@@ -167,10 +178,27 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
         }
         
-        
-        
-        
-        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = collectionView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - collectionView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && collectionView.isDragging) {
+                isMoreDataLoading = true
+                
+                // ... Code to load more results ...
+                let frame = CGRect(x: 0, y: collectionView.contentSize.height, width: collectionView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+                
+                self.refresh(pullDown: false)
+                
+            }
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
@@ -196,11 +224,6 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
         })
         
         
-        
-        
-
-        
-        
         // Do something with the images (based on your use case)
         
         
@@ -209,6 +232,14 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Dismiss UIImagePickerController to go back to your original view controller
         dismiss(animated: true, completion: nil)
     }
+    
+    func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        
+        self.refresh(pullDown: true)
+        refreshControl.endRefreshing()
+        
+    }
+
     
 
     

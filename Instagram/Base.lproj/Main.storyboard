@@ -109,7 +109,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-575.20000000000005" y="572.56371814092961"/>
+            <point key="canvasLocation" x="-311" y="573"/>
         </scene>
         <!--Instagram-->
         <scene sceneID="UYh-tJ-5Gp">
@@ -220,7 +220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mTT-4h-h7x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2653.5999999999999" y="-160.56971514242881"/>
+            <point key="canvasLocation" x="2441" y="-160"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="gYg-M2-Ze5">
@@ -273,7 +273,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tjL-Vz-SJI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3773.5999999999999" y="-160.56971514242881"/>
+            <point key="canvasLocation" x="3593" y="-160"/>
         </scene>
         <!--Choose a method-->
         <scene sceneID="992-Ws-ebB">
@@ -436,48 +436,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please add a caption to your photo " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCp-Is-f9Z">
-                                <rect key="frame" x="57" y="28" width="263" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v33-NA-hRS">
-                                <rect key="frame" x="84" y="104" width="206" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v33-NA-hRS">
+                                <rect key="frame" x="24" y="106" width="327" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k5u-iD-aOR">
-                                <rect key="frame" x="43" y="183" width="289" height="300"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k5u-iD-aOR">
+                                <rect key="frame" x="43" y="182" width="289" height="289"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="QgV-Vi-syQ"/>
-                                    <constraint firstAttribute="width" constant="300" id="j3e-FB-icf"/>
+                                    <constraint firstAttribute="width" secondItem="k5u-iD-aOR" secondAttribute="height" multiplier="1:1" id="JS1-xn-4Ji"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLb-bj-fc5">
-                                <rect key="frame" x="57" y="135" width="58" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLb-bj-fc5">
+                                <rect key="frame" x="57" y="144" width="48" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="Z8s-zj-c0v"/>
+                                </constraints>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="onCancel:" destination="7zS-LH-24e" eventType="touchUpInside" id="fwZ-Ds-T6G"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7s-1T-tXb">
-                                <rect key="frame" x="241" y="145" width="91" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7s-1T-tXb">
+                                <rect key="frame" x="281" y="144" width="37" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="37" id="Bve-SJ-2PG"/>
+                                </constraints>
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="onDone:" destination="7zS-LH-24e" eventType="touchUpInside" id="rEm-Zt-d3O"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please add a caption to your photo " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCp-Is-f9Z">
+                                <rect key="frame" x="14.5" y="28" width="346.5" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="fh2-ya-AQg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="k5u-iD-aOR" firstAttribute="top" secondItem="l7s-1T-tXb" secondAttribute="bottom" constant="8" id="PP4-NK-CW4"/>
-                            <constraint firstItem="k5u-iD-aOR" firstAttribute="centerY" secondItem="1ez-Dh-ssV" secondAttribute="centerY" id="upu-ru-pqz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="v33-NA-hRS" secondAttribute="trailing" constant="8" id="4Gw-PV-h1m"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="l7s-1T-tXb" secondAttribute="trailing" constant="41" id="65V-pk-k4T"/>
+                            <constraint firstItem="k5u-iD-aOR" firstAttribute="leading" secondItem="1ez-Dh-ssV" secondAttribute="leadingMargin" constant="27" id="8Si-WB-5sg"/>
+                            <constraint firstItem="v33-NA-hRS" firstAttribute="leading" secondItem="1ez-Dh-ssV" secondAttribute="leadingMargin" constant="8" id="IoI-Uc-tyu"/>
+                            <constraint firstItem="l7s-1T-tXb" firstAttribute="top" secondItem="v33-NA-hRS" secondAttribute="bottom" constant="8" id="S40-Yh-MRF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="k5u-iD-aOR" secondAttribute="trailing" constant="27" id="ZC9-8L-fEg"/>
+                            <constraint firstItem="aCp-Is-f9Z" firstAttribute="top" secondItem="bSg-oW-VXe" secondAttribute="bottom" constant="8" id="a9Q-WJ-07b"/>
+                            <constraint firstItem="aCp-Is-f9Z" firstAttribute="centerX" secondItem="1ez-Dh-ssV" secondAttribute="centerX" id="axZ-qs-e30"/>
+                            <constraint firstItem="RLb-bj-fc5" firstAttribute="top" secondItem="v33-NA-hRS" secondAttribute="bottom" constant="8" id="b4Q-6p-qUN"/>
+                            <constraint firstItem="v33-NA-hRS" firstAttribute="top" secondItem="aCp-Is-f9Z" secondAttribute="bottom" constant="8" id="cZz-NZ-rJJ"/>
+                            <constraint firstItem="RLb-bj-fc5" firstAttribute="top" secondItem="v33-NA-hRS" secondAttribute="bottom" constant="8" id="d1f-pP-Z8A"/>
+                            <constraint firstItem="k5u-iD-aOR" firstAttribute="top" secondItem="l7s-1T-tXb" secondAttribute="bottom" constant="8" id="jE7-cB-1CP"/>
+                            <constraint firstItem="RLb-bj-fc5" firstAttribute="leading" secondItem="1ez-Dh-ssV" secondAttribute="leadingMargin" constant="41" id="kZz-7R-R8M"/>
+                            <constraint firstItem="k5u-iD-aOR" firstAttribute="top" secondItem="l7s-1T-tXb" secondAttribute="bottom" constant="8" id="qkd-PU-vhR"/>
+                            <constraint firstItem="k5u-iD-aOR" firstAttribute="top" secondItem="RLb-bj-fc5" secondAttribute="bottom" constant="8" id="v1R-ps-Pzd"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="fLQ-A7-SRZ" appends="YES" id="mrx-oh-VzX"/>
@@ -581,7 +599,7 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="jrQ-jk-tkE"/>
         <segue reference="ldf-w5-kfP"/>
-        <segue reference="V8x-dB-az5"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -19,13 +19,28 @@ class PhotoCell: UITableViewCell {
     
     var instagramPost: PFObject! {
         didSet {
-            self.captionLabel.text = instagramPost["caption"] as! String
+            let date = instagramPost.createdAt
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .long
+            dateFormatter.timeStyle = .short
+            let dateString = dateFormatter.string(from: date!)
+            
+            var captionText = ""
+            captionText = captionText + dateString + "\n"
+            let caption = instagramPost["caption"] as! String
+            captionText = captionText + caption
+            
+            
+            
+            self.captionLabel.text = captionText
             let author = instagramPost["author"] as! PFUser
             
             print ("this is the author: \(author)")
             print ("this is the author's profile picture: \(author.value(forKey: "Profile_picture")))")
             
-            self.usernameLabel.text = author.username as! String
+            
+            
+            self.usernameLabel.text = author.username!
             
             profileImage.layer.cornerRadius = profileImage.frame.width * 0.5
             profileImage.layer.masksToBounds = true
