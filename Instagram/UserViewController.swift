@@ -23,6 +23,8 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var user: PFUser?
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
+    var refreshControl: UIRefreshControl!
+    
     var loadingMoreView: InfiniteScrollActivityView?
     var count = 0
     var isMoreDataLoading = false
@@ -35,6 +37,8 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        refreshControl = UIRefreshControl()
         if user == nil {
             user = PFUser.current()!
             
@@ -47,9 +51,8 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
         loadingMoreView!.isHidden = true
         collectionView.addSubview(loadingMoreView!)
         
-        let refreshControl = UIRefreshControl()
         self.refresh(pullDown: true)
-        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(UserViewController.refreshControlAction(_:)), for: .valueChanged)
         collectionView.insertSubview(refreshControl, at: 0)
 
         
@@ -93,6 +96,7 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.refresh(pullDown: true)
         collectionView.reloadData()
         print ("COLLECTION VIEW RELOADED IN VIEW DID LOAD")
+        self.refresh(pullDown: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -113,7 +117,9 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if pullDown {
             self.count = 0
             self.posts = nil
+            collectionView.reloadData()
         }
+        
         query.skip = self.count
         self.count = self.count + 20
         
@@ -122,10 +128,13 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
             print ("The posts are \(posts)")
             if let posts = posts {
                 // do something with the array of object returned by the call
-                if self.posts != nil {
-                    self.posts!.append(contentsOf: posts)
-                } else {
+                if pullDown {
                     self.posts = posts
+                    self.collectionView.reloadData()
+                    
+                } else {
+                    self.posts!.append(contentsOf: posts)
+                    self.collectionView.reloadData()
                 }
                 print ("the number of posts is \(posts.count)")
                 let post = posts[0]
@@ -134,9 +143,11 @@ class UserViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 //self.isMoreDataLoading = false
                 self.collectionView.reloadData()
                 
+                
             } else {
                 print(error?.localizedDescription)
             }
+            self.refreshControl.endRefreshing()
         }
         print ("the collection refresh just printed")
         collectionView.reloadData()
